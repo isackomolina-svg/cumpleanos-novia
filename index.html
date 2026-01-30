@@ -3,39 +3,73 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Feliz Cumpleaños 18 ❤️</title>
+  <title>Feliz Cumpleaños 💜</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-      background: linear-gradient(135deg, #1a1a1a, #2b2b2b);
+      background: linear-gradient(135deg, #3a0ca3, #7209b7, #b5179e);
       color: #fff;
       min-height: 100vh;
+      overflow-x: hidden;
     }
     header {
       text-align: center;
-      padding: 3rem 1.5rem 2rem;
+      padding: 3.5rem 1.5rem 2rem;
     }
     header h1 {
-      font-size: clamp(2rem, 5vw, 3rem);
-      margin-bottom: 0.5rem;
+      font-size: clamp(2.2rem, 5vw, 3.2rem);
+      margin-bottom: 0.75rem;
+      letter-spacing: 0.5px;
     }
-    header p {
-      font-size: 1.1rem;
-      opacity: 0.9;
-    }
-    .container {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 1.5rem;
-    }
-    .message {
-      background: rgba(255,255,255,0.06);
-      border-radius: 16px;
-      padding: 1.5rem;
+    header p { opacity: 0.95; }
+
+    .container { max-width: 1100px; margin: 0 auto; padding: 1.5rem; }
+
+    .card {
+      background: rgba(255,255,255,0.12);
+      border-radius: 20px;
+      padding: 1.75rem;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+      backdrop-filter: blur(6px);
       margin-bottom: 2rem;
-      line-height: 1.6;
     }
+
+    .cta {
+      display: flex;
+      justify-content: center;
+      margin: 2rem 0 3rem;
+    }
+    .cta button {
+      border: none;
+      border-radius: 999px;
+      padding: 0.9rem 1.6rem;
+      font-size: 1.05rem;
+      font-weight: 600;
+      cursor: pointer;
+      color: #3a0ca3;
+      background: #f1c0ff;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+    .cta button:hover { transform: translateY(-2px); box-shadow: 0 18px 40px rgba(0,0,0,0.35); }
+
+    .hidden { display: none; }
+
+    .messages {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    .note {
+      background: rgba(255,255,255,0.18);
+      border-radius: 16px;
+      padding: 1.2rem;
+      line-height: 1.55;
+      animation: fadeUp .6s ease both;
+    }
+
     .gallery {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -45,57 +79,85 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      border-radius: 14px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border-radius: 50% 50% 40% 40% / 45% 45% 55% 55%;
+      animation: fadeUp .6s ease both;
     }
-    .gallery img:hover {
-      transform: scale(1.03);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-    }
-    footer {
-      text-align: center;
-      padding: 2rem 1rem 3rem;
-      font-size: 0.95rem;
-      opacity: 0.85;
+
+    footer { text-align: center; padding: 2.5rem 1rem 3rem; opacity: 0.9; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>Feliz Cumpleaños 18 🎉</h1>
-    <p>Hoy celebramos tu vida, tu sonrisa y todo lo bonito que eres</p>
+    <h1>Feliz Cumpleaños, hermosa 💜</h1>
+    <p>Hoy celebramos 18 años de luz, sueños y sonrisas</p>
   </header>
 
+  <!-- Música de fondo (el usuario debe subir musica.mp3) -->
+  <audio id="bgMusic" loop>
+    <source src="musica.mp3" type="audio/mpeg" />
+  </audio>
+
   <main class="container">
-    <section class="message">
+    <section class="card">
       <p>
-        Hoy cumples 18 años y quería regalarte algo diferente, algo que puedas abrir
-        en cualquier momento y desde cualquier lugar. Cada foto aquí guarda un
-        recuerdo, una etapa y muchas sonrisas.
-      </p>
-      <p style="margin-top: 1rem;">
-        Que esta nueva vuelta al sol venga llena de sueños cumplidos, momentos felices
-        y personas que te quieran bonito. Estoy muy orgulloso de ti.
+        Este regalo es para ti. Para que lo abras cuando quieras y recuerdes
+        lo especial que eres. Cada palabra y cada imagen están aquí porque
+        mereces cosas bonitas, hoy y siempre.
       </p>
     </section>
 
-    <section class="gallery">
-      <!-- Reemplaza los src por los nombres de tus archivos de imagen -->
-      <img src="foto1.jpg" alt="Recuerdo 1" />
-      <img src="foto2.jpg" alt="Recuerdo 2" />
-      <img src="foto3.jpg" alt="Recuerdo 3" />
-      <img src="foto4.jpg" alt="Recuerdo 4" />
-      <img src="foto5.jpg" alt="Recuerdo 5" />
-      <img src="foto6.jpg" alt="Recuerdo 6" />
-      <img src="foto7.jpg" alt="Recuerdo 7" />
-      <img src="foto8.jpg" alt="Recuerdo 8" />
-      <img src="foto9.jpg" alt="Recuerdo 9" />
-      <img src="foto10.jpg" alt="Recuerdo 10" />
+    <div class="cta">
+      <button id="openBtn">Haz clic aquí ✨</button>
+    </div>
+
+    <section id="surprise" class="hidden">
+      <div class="messages">
+        <div class="note">Eres una mujer increíble, fuerte y llena de magia. Nunca dudes de lo mucho que vales.</div>
+        <div class="note">Que esta nueva etapa te regale sueños grandes, risas sinceras y momentos inolvidables.</div>
+        <div class="note">Tu sonrisa tiene el poder de cambiar días enteros. Gracias por existir.</div>
+        <div class="note">Hoy cumples 18, pero tu corazón siempre ha sido enorme.</div>
+        <div class="note"><strong>Te adoro como un dolito 💜</strong></div>
+      </div>
+        <div class="note">Que esta nueva etapa te regale sueños grandes, risas sinceras y momentos inolvidables.</div>
+        <div class="note">Tu sonrisa tiene el poder de cambiar días enteros. Gracias por existir.</div>
+        <div class="note">Hoy cumples 18, pero tu corazón siempre ha sido enorme.</div>
+      </div>
+
+      <div class="gallery">
+        <img src="foto1.jpg" alt="Recuerdo 1" />
+        <img src="foto2.jpg" alt="Recuerdo 2" />
+        <img src="foto3.jpg" alt="Recuerdo 3" />
+        <img src="foto4.jpg" alt="Recuerdo 4" />
+        <img src="foto5.jpg" alt="Recuerdo 5" />
+        <img src="foto6.jpg" alt="Recuerdo 6" />
+        <img src="foto7.jpg" alt="Recuerdo 7" />
+        <img src="foto8.jpg" alt="Recuerdo 8" />
+        <img src="foto9.jpg" alt="Recuerdo 9" />
+        <img src="foto10.jpg" alt="Recuerdo 10" />
+      </div>
     </section>
   </main>
 
   <footer>
-    <p>Con cariño, en tu día especial ❤️</p>
+    <p>De tu tito para tita 💜</p>
   </footer>
+
+  <script>
+    const btn = document.getElementById('openBtn');
+    const surprise = document.getElementById('surprise');
+    const music = document.getElementById('bgMusic');
+
+    btn.addEventListener('click', () => {
+      surprise.classList.remove('hidden');
+      btn.style.display = 'none';
+      music.play().catch(() => {});
+      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+    });
+  </script>
 </body>
 </html>
