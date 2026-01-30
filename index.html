@@ -8,96 +8,106 @@
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-      background: linear-gradient(135deg, #3a0ca3, #7209b7, #b5179e);
-      color: #fff;
       min-height: 100vh;
+      color: #fff;
+      background:
+        radial-gradient(1200px 600px at 10% -10%, #ffd6ff55, transparent 60%),
+        radial-gradient(800px 500px at 90% 10%, #cdb4db66, transparent 60%),
+        linear-gradient(135deg, #3a0ca3, #7209b7, #b5179e);
       overflow-x: hidden;
     }
-    header {
-      text-align: center;
-      padding: 3.5rem 1.5rem 2rem;
+
+    /* Destellos */
+    .sparkles::before, .sparkles::after {
+      content: "";
+      position: fixed;
+      inset: -20%;
+      background-image:
+        radial-gradient(2px 2px at 20% 30%, #fff8, transparent 60%),
+        radial-gradient(2px 2px at 70% 20%, #fff8, transparent 60%),
+        radial-gradient(2px 2px at 40% 80%, #fff8, transparent 60%),
+        radial-gradient(2px 2px at 80% 70%, #fff8, transparent 60%);
+      animation: twinkle 6s linear infinite;
+      pointer-events: none;
     }
-    header h1 {
-      font-size: clamp(2.2rem, 5vw, 3.2rem);
-      margin-bottom: 0.75rem;
-      letter-spacing: 0.5px;
+    .sparkles::after { animation-duration: 9s; opacity: .6; }
+    @keyframes twinkle { from { transform: translateY(0);} to { transform: translateY(-40px);} }
+
+    /* Corazones flotantes */
+    .hearts { position: fixed; inset: 0; pointer-events: none; overflow: hidden; }
+    .heart {
+      position: absolute; bottom: -10vh; width: 14px; height: 14px;
+      background: linear-gradient(135deg, #ffd6ff, #f1c0ff);
+      transform: rotate(45deg);
+      animation: floatUp linear infinite;
+      opacity: .85;
     }
-    header p { opacity: 0.95; }
+    .heart::before, .heart::after {
+      content: ""; position: absolute; width: 14px; height: 14px; background: inherit; border-radius: 50%;
+    }
+    .heart::before { left: -7px; }
+    .heart::after { top: -7px; }
+    @keyframes floatUp { to { transform: translateY(-120vh) rotate(45deg); opacity: 0; } }
+
+    header { text-align: center; padding: 3.5rem 1.5rem 2rem; }
+    header h1 { font-size: clamp(2.3rem, 5vw, 3.4rem); margin-bottom: .75rem; }
+    header p { opacity: .95; }
 
     .container { max-width: 1100px; margin: 0 auto; padding: 1.5rem; }
 
     .card {
-      background: rgba(255,255,255,0.12);
-      border-radius: 20px;
-      padding: 1.75rem;
-      box-shadow: 0 20px 50px rgba(0,0,0,0.25);
-      backdrop-filter: blur(6px);
-      margin-bottom: 2rem;
+      background: linear-gradient(180deg, rgba(255,255,255,.22), rgba(255,255,255,.12));
+      border-radius: 22px; padding: 2rem; text-align: center;
+      box-shadow: 0 25px 60px rgba(0,0,0,.28);
+      backdrop-filter: blur(8px); margin-bottom: 2rem;
     }
 
-    .cta {
-      display: flex;
-      justify-content: center;
-      margin: 2rem 0 3rem;
-    }
+    .cta { display: flex; justify-content: center; margin: 2rem 0 3rem; }
     .cta button {
-      border: none;
-      border-radius: 999px;
-      padding: 0.9rem 1.6rem;
-      font-size: 1.05rem;
-      font-weight: 600;
-      cursor: pointer;
+      border: none; border-radius: 999px; padding: 1rem 1.8rem;
+      font-size: 1.1rem; font-weight: 700; cursor: pointer;
       color: #3a0ca3;
-      background: #f1c0ff;
-      box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+      background: linear-gradient(135deg, #ffd6ff, #f1c0ff);
+      box-shadow: 0 14px 36px rgba(0,0,0,.3);
       transition: transform .2s ease, box-shadow .2s ease;
     }
-    .cta button:hover { transform: translateY(-2px); box-shadow: 0 18px 40px rgba(0,0,0,0.35); }
+    .cta button:hover { transform: translateY(-2px); box-shadow: 0 22px 50px rgba(0,0,0,.4); }
 
     .hidden { display: none; }
 
     .messages {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1rem;
-      margin-bottom: 2rem;
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.2rem; margin-bottom: 2.5rem; text-align: center;
     }
     .note {
-      background: rgba(255,255,255,0.18);
-      border-radius: 16px;
-      padding: 1.2rem;
-      line-height: 1.55;
-      animation: fadeUp .6s ease both;
+      background: linear-gradient(180deg, rgba(255,255,255,.25), rgba(255,255,255,.14));
+      border-radius: 18px; padding: 1.4rem; line-height: 1.6;
+      opacity: 0; transform: translateY(14px);
     }
 
     .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1rem;
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.2rem;
     }
     .gallery img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 50% 50% 40% 40% / 45% 45% 55% 55%;
-      animation: fadeUp .6s ease both;
+      width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 14px;
+      box-shadow: 0 16px 40px rgba(0,0,0,.35);
+      opacity: 0; transform: scale(.96);
     }
 
-    footer { text-align: center; padding: 2.5rem 1rem 3rem; opacity: 0.9; }
+    .show { animation: showUp .6s ease forwards; }
+    @keyframes showUp { to { opacity: 1; transform: none; } }
 
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(12px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+    footer { text-align: center; padding: 2.5rem 1rem 3rem; opacity: .95; }
   </style>
 </head>
-<body>
+<body class="sparkles">
+  <div class="hearts" id="hearts"></div>
+
   <header>
     <h1>Feliz Cumpleaños, hermosa 💜</h1>
     <p>Hoy celebramos 18 años de luz, sueños y sonrisas</p>
   </header>
 
-  <!-- Música de fondo (el usuario debe subir musica.mp3) -->
   <audio id="bgMusic" loop>
     <source src="musica.mp3" type="audio/mpeg" />
   </audio>
@@ -123,10 +133,6 @@
         <div class="note">Hoy cumples 18, pero tu corazón siempre ha sido enorme.</div>
         <div class="note"><strong>Te adoro como un dolito 💜</strong></div>
       </div>
-        <div class="note">Que esta nueva etapa te regale sueños grandes, risas sinceras y momentos inolvidables.</div>
-        <div class="note">Tu sonrisa tiene el poder de cambiar días enteros. Gracias por existir.</div>
-        <div class="note">Hoy cumples 18, pero tu corazón siempre ha sido enorme.</div>
-      </div>
 
       <div class="gallery">
         <img src="foto1.jpg" alt="Recuerdo 1" />
@@ -151,12 +157,29 @@
     const btn = document.getElementById('openBtn');
     const surprise = document.getElementById('surprise');
     const music = document.getElementById('bgMusic');
+    const heartsBox = document.getElementById('hearts');
+
+    function spawnHearts() {
+      for (let i = 0; i < 18; i++) {
+        const h = document.createElement('div');
+        h.className = 'heart';
+        h.style.left = Math.random() * 100 + 'vw';
+        h.style.animationDuration = 6 + Math.random() * 6 + 's';
+        h.style.animationDelay = Math.random() * 3 + 's';
+        heartsBox.appendChild(h);
+      }
+    }
 
     btn.addEventListener('click', () => {
       surprise.classList.remove('hidden');
       btn.style.display = 'none';
       music.play().catch(() => {});
-      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+      spawnHearts();
+
+      const notes = document.querySelectorAll('.note');
+      const imgs = document.querySelectorAll('.gallery img');
+      notes.forEach((el, i) => setTimeout(() => el.classList.add('show'), 200 * i));
+      imgs.forEach((el, i) => setTimeout(() => el.classList.add('show'), 150 * i + 1200));
     });
   </script>
 </body>
