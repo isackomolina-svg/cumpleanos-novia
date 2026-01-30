@@ -1,186 +1,208 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Feliz Cumpleaños 💜</title>
-  <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-      min-height: 100vh;
-      color: #fff;
-      background:
-        radial-gradient(1200px 600px at 10% -10%, #ffd6ff55, transparent 60%),
-        radial-gradient(800px 500px at 90% 10%, #cdb4db66, transparent 60%),
-        linear-gradient(135deg, #3a0ca3, #7209b7, #b5179e);
-      overflow-x: hidden;
-    }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Paulina 💜</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+font-family:'Segoe UI',system-ui,-apple-system,BlinkMacSystemFont,sans-serif;
+min-height:100vh;color:#fff;text-align:center;overflow-x:hidden;
+background:
+radial-gradient(1200px 600px at 10% -10%, #ffd6ff55, transparent 60%),
+radial-gradient(800px 500px at 90% 10%, #cdb4db66, transparent 60%),
+linear-gradient(135deg,#240046,#5a189a,#9d4edd,#e0aaff);
+}
 
-    /* Destellos */
-    .sparkles::before, .sparkles::after {
-      content: "";
-      position: fixed;
-      inset: -20%;
-      background-image:
-        radial-gradient(2px 2px at 20% 30%, #fff8, transparent 60%),
-        radial-gradient(2px 2px at 70% 20%, #fff8, transparent 60%),
-        radial-gradient(2px 2px at 40% 80%, #fff8, transparent 60%),
-        radial-gradient(2px 2px at 80% 70%, #fff8, transparent 60%);
-      animation: twinkle 6s linear infinite;
-      pointer-events: none;
-    }
-    .sparkles::after { animation-duration: 9s; opacity: .6; }
-    @keyframes twinkle { from { transform: translateY(0);} to { transform: translateY(-40px);} }
+/* BRILLOS */
+.sparkles::before,.sparkles::after{
+content:"";position:fixed;inset:-20%;pointer-events:none;
+background-image:
+radial-gradient(2px 2px at 20% 30%,#fff8,transparent 60%),
+radial-gradient(2px 2px at 70% 20%,#fff8,transparent 60%),
+radial-gradient(2px 2px at 40% 80%,#fff8,transparent 60%),
+radial-gradient(2px 2px at 80% 70%,#fff8,transparent 60%);
+animation:twinkle 10s linear infinite
+}
+.sparkles::after{animation-duration:16s;opacity:.6}
+@keyframes twinkle{to{transform:translateY(-50px)}}
 
-    /* Corazones flotantes */
-    .hearts { position: fixed; inset: 0; pointer-events: none; overflow: hidden; }
-    .heart {
-      position: absolute; bottom: -10vh; width: 14px; height: 14px;
-      background: linear-gradient(135deg, #ffd6ff, #f1c0ff);
-      transform: rotate(45deg);
-      animation: floatUp linear infinite;
-      opacity: .85;
-    }
-    .heart::before, .heart::after {
-      content: ""; position: absolute; width: 14px; height: 14px; background: inherit; border-radius: 50%;
-    }
-    .heart::before { left: -7px; }
-    .heart::after { top: -7px; }
-    @keyframes floatUp { to { transform: translateY(-120vh) rotate(45deg); opacity: 0; } }
+/* FLOTANTES */
+.float-layer{position:fixed;inset:0;pointer-events:none;overflow:hidden}
+.float{position:absolute;bottom:-10vh;animation:floatUp linear infinite}
+.heart{width:14px;height:14px;background:linear-gradient(135deg,#ffd6ff,#f1c0ff);transform:rotate(45deg)}
+.heart::before,.heart::after{content:"";position:absolute;width:14px;height:14px;border-radius:50%;background:inherit}
+.heart::before{left:-7px}.heart::after{top:-7px}
+.koala{font-size:22px;filter:drop-shadow(0 0 6px #fff)}
+@keyframes floatUp{to{transform:translateY(-120vh);opacity:0}}
 
-    header { text-align: center; padding: 3.5rem 1.5rem 2rem; }
-    header h1 { font-size: clamp(2.3rem, 5vw, 3.4rem); margin-bottom: .75rem; }
-    header p { opacity: .95; }
+/* CUENTA REGRESIVA */
+.countdown{
+position:fixed;inset:0;display:flex;align-items:center;justify-content:center;
+background:linear-gradient(135deg,#240046ee,#5a189aee,#9d4edde);
+backdrop-filter:blur(8px);z-index:10;
+font-size:clamp(3rem,10vw,6rem);font-weight:800
+}
+.countdown.hidden{display:none}
 
-    .container { max-width: 1100px; margin: 0 auto; padding: 1.5rem; }
+/* GLOW NOMBRE */
+.glow{
+text-shadow:
+0 0 10px #ffd6ff,
+0 0 20px #ffd6ff,
+0 0 40px #f1c0ff;
+animation:pulse 2.5s ease-in-out infinite
+}
+@keyframes pulse{50%{text-shadow:0 0 18px #ffd6ff,0 0 36px #f1c0ff,0 0 60px #e0aaff}}
 
-    .card {
-      background: linear-gradient(180deg, rgba(255,255,255,.22), rgba(255,255,255,.12));
-      border-radius: 22px; padding: 2rem; text-align: center;
-      box-shadow: 0 25px 60px rgba(0,0,0,.28);
-      backdrop-filter: blur(8px); margin-bottom: 2rem;
-    }
+header{padding:4rem 1.5rem 2rem}
+header h1{font-size:clamp(2.6rem,5vw,3.8rem)}
+header p{opacity:.95}
 
-    .cta { display: flex; justify-content: center; margin: 2rem 0 3rem; }
-    .cta button {
-      border: none; border-radius: 999px; padding: 1rem 1.8rem;
-      font-size: 1.1rem; font-weight: 700; cursor: pointer;
-      color: #3a0ca3;
-      background: linear-gradient(135deg, #ffd6ff, #f1c0ff);
-      box-shadow: 0 14px 36px rgba(0,0,0,.3);
-      transition: transform .2s ease, box-shadow .2s ease;
-    }
-    .cta button:hover { transform: translateY(-2px); box-shadow: 0 22px 50px rgba(0,0,0,.4); }
+.container{max-width:900px;margin:auto;padding:1.5rem}
+.card{
+background:linear-gradient(180deg,rgba(255,255,255,.32),rgba(255,255,255,.16));
+border-radius:28px;padding:2.4rem;line-height:1.8;
+box-shadow:0 35px 80px rgba(0,0,0,.4);
+backdrop-filter:blur(12px);margin-bottom:2.5rem
+}
 
-    .hidden { display: none; }
+button{
+border:none;border-radius:999px;padding:1.2rem 2.2rem;
+font-size:1.2rem;font-weight:700;cursor:pointer;
+color:#3a0ca3;background:linear-gradient(135deg,#ffd6ff,#f1c0ff);
+box-shadow:0 20px 45px rgba(0,0,0,.45)
+}
+button:hover{transform:translateY(-2px)}
+.hidden{display:none}
 
-    .messages {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 1.2rem; margin-bottom: 2.5rem; text-align: center;
-    }
-    .note {
-      background: linear-gradient(180deg, rgba(255,255,255,.25), rgba(255,255,255,.14));
-      border-radius: 18px; padding: 1.4rem; line-height: 1.6;
-      opacity: 0; transform: translateY(14px);
-    }
+.line{opacity:0;transform:translateY(14px);margin-bottom:1rem}
+img{
+width:100%;max-width:420px;margin:1.4rem auto;display:block;
+aspect-ratio:1/1;object-fit:cover;border-radius:20px;
+box-shadow:0 20px 50px rgba(0,0,0,.5);
+opacity:0;transform:scale(.95)
+}
+.show{animation:showUp .8s ease forwards}
+@keyframes showUp{to{opacity:1;transform:none}}
 
-    .gallery {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.2rem;
-    }
-    .gallery img {
-      width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 14px;
-      box-shadow: 0 16px 40px rgba(0,0,0,.35);
-      opacity: 0; transform: scale(.96);
-    }
+/* MENSAJE OCULTO */
+.secret{opacity:0;transform:scale(.9)}
+.reveal{animation:showUp 1s ease forwards}
 
-    .show { animation: showUp .6s ease forwards; }
-    @keyframes showUp { to { opacity: 1; transform: none; } }
-
-    footer { text-align: center; padding: 2.5rem 1rem 3rem; opacity: .95; }
-  </style>
+footer{padding:3rem 1rem;opacity:.95}
+</style>
 </head>
 <body class="sparkles">
-  <div class="hearts" id="hearts"></div>
+<div class="float-layer" id="floatLayer"></div>
 
-  <header>
-    <h1>Feliz Cumpleaños, hermosa 💜</h1>
-    <p>Hoy celebramos 18 años de luz, sueños y sonrisas</p>
-  </header>
+<!-- CUENTA REGRESIVA -->
+<div class="countdown" id="countdown">3</div>
 
-  <audio id="bgMusic" loop>
-    <source src="musica.mp3" type="audio/mpeg" />
-  </audio>
+<header>
+<h1>Feliz cumpleaños, <span class="glow">Paulina</span> 💜</h1>
+<p>Hoy el mundo es más bonito porque tú existes</p>
+</header>
 
-  <main class="container">
-    <section class="card">
-      <p>
-        Este regalo es para ti. Para que lo abras cuando quieras y recuerdes
-        lo especial que eres. Cada palabra y cada imagen están aquí porque
-        mereces cosas bonitas, hoy y siempre.
-      </p>
-    </section>
+<audio id="music" loop>
+<source src="musica.mp3" type="audio/mpeg">
+</audio>
 
-    <div class="cta">
-      <button id="openBtn">Haz clic aquí ✨</button>
-    </div>
+<main class="container">
+<div class="card">
+<p>Antes de empezar… respira profundo 💫<br>Este regalo fue hecho para tocarte el corazón.</p>
+</div>
 
-    <section id="surprise" class="hidden">
-      <div class="messages">
-        <div class="note">Eres una mujer increíble, fuerte y llena de magia. Nunca dudes de lo mucho que vales.</div>
-        <div class="note">Que esta nueva etapa te regale sueños grandes, risas sinceras y momentos inolvidables.</div>
-        <div class="note">Tu sonrisa tiene el poder de cambiar días enteros. Gracias por existir.</div>
-        <div class="note">Hoy cumples 18, pero tu corazón siempre ha sido enorme.</div>
-        <div class="note"><strong>Te adoro como un dolito 💜</strong></div>
-      </div>
+<button id="btn">Comenzar ✨</button>
 
-      <div class="gallery">
-        <img src="foto1.jpg" alt="Recuerdo 1" />
-        <img src="foto2.jpg" alt="Recuerdo 2" />
-        <img src="foto3.jpg" alt="Recuerdo 3" />
-        <img src="foto4.jpg" alt="Recuerdo 4" />
-        <img src="foto5.jpg" alt="Recuerdo 5" />
-        <img src="foto6.jpg" alt="Recuerdo 6" />
-        <img src="foto7.jpg" alt="Recuerdo 7" />
-        <img src="foto8.jpg" alt="Recuerdo 8" />
-        <img src="foto9.jpg" alt="Recuerdo 9" />
-        <img src="foto10.jpg" alt="Recuerdo 10" />
-      </div>
-    </section>
-  </main>
+<section id="content" class="hidden">
+<div class="card" id="poem">
+<div class="line"><strong>30 de enero</strong></div><br>
+<div class="line">Hoy el tiempo se detiene un segundo</div>
+<div class="line">para recordarme lo afortunado que soy,</div>
+<div class="line">porque en este día nació alguien</div>
+<div class="line">que vino a darle sentido a muchas cosas</div>
+<div class="line">que antes no sabía explicar.</div><br>
+<div class="line">Llegaste como llegan las cosas bonitas:</div>
+<div class="line">sin aviso, sin ruido,</div>
+<div class="line">pero quedándote en cada pensamiento,</div>
+<div class="line">en cada risa que se escapa sin razón,</div>
+<div class="line">en cada silencio que también sabe a hogar.</div><br>
+<div class="line"><strong>Paulina,</strong></div>
+<div class="line">tus pasos han dejado huella en mis días,</div>
+<div class="line">tu forma de mirar ha cambiado mi manera de ver,</div>
+<div class="line">y tu presencia —tan sencilla y tan inmensa—</div>
+<div class="line">se volvió refugio, calma</div>
+<div class="line">y alegría constante.</div><br>
+<div class="line">Que este nuevo año te regale sueños cumplidos,</div>
+<div class="line">metas que se acerquen,</div>
+<div class="line">momentos que valga la pena guardar</div>
+<div class="line">y razones nuevas para sonreír sin miedo.</div>
+<div class="line">Que nunca dudes de lo increíble que eres</div>
+<div class="line">ni de lo mucho que iluminas todo a tu alrededor.</div><br>
+<div class="line">Y nunca se te olvide la canción que dediqué ayer bajo el frío de Santa Elena,</div>
+<div class="line">porque en cada nota iba un pedacito de lo que siento,</div>
+<div class="line">de lo que no siempre sé decir con palabras,</div>
+<div class="line">pero que nace de lo más sincero de mi corazón.</div><br>
+<div class="line"><strong>Feliz cumpleaños, Paulina.</strong></div>
+<div class="line">Que la vida te trate bonito,</div>
+<div class="line">como tú lo haces con el mundo</div>
+<div class="line">y conmigo. ✨💖</div>
+</div>
 
-  <footer>
-    <p>De tu tito para tita 💜</p>
-  </footer>
+<img src="foto1.jpg"><img src="foto2.jpg"><img src="foto3.jpg"><img src="foto4.jpg"><img src="foto5.jpg"><img src="foto6.jpg"><img src="foto7.jpg"><img src="foto8.jpg"><img src="foto9.jpg"><img src="foto10.jpg">
 
-  <script>
-    const btn = document.getElementById('openBtn');
-    const surprise = document.getElementById('surprise');
-    const music = document.getElementById('bgMusic');
-    const heartsBox = document.getElementById('hearts');
+<div class="card secret" id="secret">
+<p><strong>Si llegaste hasta acá…</strong><br><br>
+Si llegaste hasta acá, espero que sí jajjajaj, porque si no… jmmmmm, sin palabras 😅💜<br><br>
+Espero haber hecho de tu cumpleaños algo que no se te olvide tan fácil y que hayas disfrutado muchito.
+</p>
+</div>
 
-    function spawnHearts() {
-      for (let i = 0; i < 18; i++) {
-        const h = document.createElement('div');
-        h.className = 'heart';
-        h.style.left = Math.random() * 100 + 'vw';
-        h.style.animationDuration = 6 + Math.random() * 6 + 's';
-        h.style.animationDelay = Math.random() * 3 + 's';
-        heartsBox.appendChild(h);
-      }
-    }
+<div class="card">
+<p><strong>Te adoro como un dolito 💜</strong><br><br>De tu tito para tita</p>
+</div>
+</section>
+</main>
 
-    btn.addEventListener('click', () => {
-      surprise.classList.remove('hidden');
-      btn.style.display = 'none';
-      music.play().catch(() => {});
-      spawnHearts();
+<footer>
+<p>Hecho con amor infinito 🐨💜</p>
+</footer>
 
-      const notes = document.querySelectorAll('.note');
-      const imgs = document.querySelectorAll('.gallery img');
-      notes.forEach((el, i) => setTimeout(() => el.classList.add('show'), 200 * i));
-      imgs.forEach((el, i) => setTimeout(() => el.classList.add('show'), 150 * i + 1200));
-    });
-  </script>
+<script>
+const btn=document.getElementById('btn');
+const content=document.getElementById('content');
+const music=document.getElementById('music');
+const layer=document.getElementById('floatLayer');
+const countdown=document.getElementById('countdown');
+const secret=document.getElementById('secret');
+
+// Cuenta regresiva
+let c=3;
+const timer=setInterval(()=>{
+countdown.textContent=c;
+if(navigator.vibrate) navigator.vibrate(30);
+c--;
+if(c<0){clearInterval(timer);countdown.classList.add('hidden')}
+},900);
+
+function spawn(){
+for(let i=0;i<30;i++){
+const e=document.createElement('div');e.className='float';
+e.style.left=Math.random()*100+'vw';
+e.style.animationDuration=6+Math.random()*7+'s';
+if(Math.random()<0.6){e.innerHTML='🐨';e.classList.add('koala')}else{e.classList.add('heart')}
+layer.appendChild(e)}
+}
+
+btn.onclick=()=>{
+content.classList.remove('hidden');btn.style.display='none';
+music.play().catch(()=>{});spawn();
+const els=document.querySelectorAll('.line,img');
+els.forEach((el,i)=>setTimeout(()=>el.classList.add('show'),220*i));
+setTimeout(()=>secret.classList.add('reveal'),220*els.length+1200)
+}
+</script>
 </body>
 </html>
